@@ -1,21 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from typing import List
-import json
-import statistics
-import numpy as np
-from pathlib import Path
 
 app = FastAPI()
 
-# Enable CORS for POST from any origin
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_methods=["POST"],
+    allow_credentials=False,
+    allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 DATA_PATH = Path(__file__).parent / "telemetry.json"
 
